@@ -1,3 +1,21 @@
+# spinup_complete
+
+对spinup代码的完善和整理，加入了pytorch版本的trpo以及离散版本的SAC
+
+项目参考Openai Spinup 项目的格式，每个RL算法均是一个单独的文件
+alg
+-core.py
+-alg.py
+-alg_train.py
+-alg_test.py
+便于学习和开发。
+另外，本项目使用了spinup的log工具，需要安装mpi插件
+pytorch版本 1.11
+
+
+
+
+
 [核心算法及其实现 — Spinning Up 文档](https://spinningup.readthedocs.io/zh_CN/latest/user/algorithms.html)
 
 
@@ -43,7 +61,7 @@ $$
 $$
 $=$ 
 
-![image-20220309112803911](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309112803911.png)
+![image-20220309112803911](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309112803911.png)
 
 这是因为spinup的推导使用的 $G_t$ 是**有限无折扣回报**。有限步长理论上不需要折扣因子，因为奖励本来就是收敛的，但是！**也可以加上折扣因子让奖励和时间建立联系**。
 $$
@@ -53,7 +71,7 @@ $$
 
 式子中的 $ G_t$ 可以记为 $\Psi_t$ ，是**下面的第2种**形式。
 
-![image-20220309123753471](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309123753471.png)
+![image-20220309123753471](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309123753471.png)
 
 $\Psi_t$ 还可以是  $ q_\pi (S_t,A_t)$
 
@@ -67,7 +85,7 @@ $ [U_t-v_\pi(S_t)] = [R_{t+1} + \gamma v_{\pi}(S_{t+1})-v_\pi(S_t)]$ ，时序�
 
 以有限步长的公式为基础，**也就是说不引入折扣因子！**：
 
-![image-20220309124957849](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309124957849.png)
+![image-20220309124957849](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309124957849.png)
 
 
 
@@ -154,7 +172,7 @@ for epoch in range(epochs):
 
 并且update**价值（v或者q）**的时候，采用的是实实在在的 $G_t$ 和价值函数的MSE差异，即 $U = G_t$
 
-![image-20220315131956703](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315131956703.png)
+![image-20220315131956703](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315131956703.png)
 
 **为什么这三个算法原生支持离散动作空间？但是SAC不支持？**
 
@@ -194,13 +212,13 @@ $$
 $$
 这个式子是这样推出来的。
 
-<img src="D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220304152627112.png" alt="image-20220304152627112" style="zoom:80%;" />
+<img src="https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220304152627112.png" alt="image-20220304152627112" style="zoom:80%;" />
 
 
 
-![image-20220309081653401](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309081653401.png)
+![image-20220309081653401](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309081653401.png)
 
-![image-20220304152547764](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220304152547764.png)
+![image-20220304152547764](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220304152547764.png)
 
 ```python
 # 设置计算VPG的 policy loss
@@ -259,13 +277,13 @@ spinup的一些小工具 utils可以用一用，但是也可以不用，用tenso
 
 离散表现：
 
-![image-20220317110808939](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317110808939.png)
+![image-20220317110808939](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317110808939.png)
 
 
 
-![image-20220308204142465](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220308204142465.png)
+![image-20220308204142465](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220308204142465.png)
 
-![image-20220307150643026](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220307150643026.png)
+![image-20220307150643026](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220307150643026.png)
 
 
 
@@ -285,23 +303,23 @@ max_\theta L(\theta,\theta_k)
 $$
 
 
-![image-20220309081220365](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309081220365.png)
+![image-20220309081220365](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309081220365.png)
 
 
 
 但是这个函数实际程序不好操作，所以做了改进
 
-![image-20220309081253501](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309081253501.png)
+![image-20220309081253501](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309081253501.png)
 
 有别人写的代码，但是只能用于连续动作区间，理论上是可以用到离散动作空间的
 
 用到了最优化课程里面的共轭梯度算法啊。
 
-![image-20220307151512525](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220307151512525.png)
+![image-20220307151512525](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220307151512525.png)
 
 
 
-![image-20220307151354942](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220307151354942.png)
+![image-20220307151354942](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220307151354942.png)
 
 [Conjugate gradient method - Wikipedia](https://en.wikipedia.org/wiki/Conjugate_gradient_method)
 
@@ -416,13 +434,13 @@ $$
 
 离散表现
 
-![image-20220317111947366](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317111947366.png)
+![image-20220317111947366](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317111947366.png)
 
 连续表现
 
-![image-20220314160630386](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220314160630386.png)
+![image-20220314160630386](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220314160630386.png)
 
-![image-20220314160613015](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220314160613015.png)
+![image-20220314160613015](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220314160613015.png)
 
 
 
@@ -440,23 +458,23 @@ NPG只不过是update和trpo不同，只用了一次直线搜索，其他都一�
 
 ## PPO
 
-![image-20220309081745829](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309081745829.png)
+![image-20220309081745829](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309081745829.png)
 
-![image-20220309081843053](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309081843053.png)
+![image-20220309081843053](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309081843053.png)
 
 虽然算法中出现了 $\theta_k, \theta_{k+1}$ 但是，更新参数的时候是靠loss的纯梯度自动更新，所以只需要1个policy就行，不需要再搞一个旧的policy。旧的量就用buffer中存储的就可以了。因为buffer中存储的是上一个epoch的策略产生的值，这一个epoch的策略已经是更新过的策略了。
 
-![image-20220308192451763](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220308192451763.png)
+![image-20220308192451763](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220308192451763.png)
 
 
 
 离散表现
 
-![image-20220317112232111](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317112232111.png)
+![image-20220317112232111](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317112232111.png)
 
-![image-20220309082203491](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309082203491.png)
+![image-20220309082203491](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309082203491.png)
 
-<img src="D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220308204313906.png" alt="image-20220308204313906" style="zoom:67%;" />
+<img src="https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220308204313906.png" alt="image-20220308204313906" style="zoom:67%;" />
 
 ```python
 # 设置计算VPG的 policy loss
@@ -595,9 +613,9 @@ for t in range(total_steps):
 
 并且在update更新**价值（v或者q）**的时候，用到的是时序差分，无论是q还是v，都是使用的$y$ 和q或者v的MSE，即 $U = y = r+\gamma v(或者q)$
 
-![image-20220315132112938](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315132112938.png)
+![image-20220315132112938](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315132112938.png)
 
-![image-20220315132124571](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315132124571.png)
+![image-20220315132124571](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315132124571.png)
 
 写程序的时候一定要注意，是梯度上升还是下降！
 
@@ -617,9 +635,9 @@ $$
 
 估计回报 $U = r+\gamma Q$
 
-![image-20220309090240190](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220309090240190.png)
+![image-20220309090240190](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309090240190.png)
 
-![image-20220311185006713](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220311185006713.png)
+![image-20220311185006713](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220311185006713.png)
 
 ```python
 def compute_loss_q(self, data):
@@ -680,9 +698,9 @@ def compute_loss_q(self, data):
                 p_targ.data.add_((1 - self.delay_up) * p.data)
 ```
 
-![image-20220317130210676](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317130210676.png)
+![image-20220317130210676](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317130210676.png)
 
-![image-20220314203828354](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220314203828354.png)
+![image-20220314203828354](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220314203828354.png)
 
 
 
@@ -690,9 +708,9 @@ def compute_loss_q(self, data):
 
 两个ac，一个ac3个网络，pi+q1+q2
 
-![image-20220314191013293](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220314191013293.png)
+![image-20220314191013293](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220314191013293.png)
 
-![image-20220317105608586](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317105608586.png)
+![image-20220317105608586](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317105608586.png)
 
 更新步骤和ddpg一样，只不过计算损失不一样了，并且ac多了个q2网络
 
@@ -780,9 +798,9 @@ def compute_loss_q(self, data):
                     p_targ.data.add_((1 - self.delay_up) * p.data)
 ```
 
-![image-20220317125534090](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317125534090.png)
+![image-20220317125534090](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317125534090.png)
 
-![image-20220314203857340](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220314203857340.png)
+![image-20220314203857340](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220314203857340.png)
 
 ## SAC (2018) 不带温度参数
 
@@ -806,29 +824,29 @@ SAC的两个特点：
 
    这一步变化，导致了下面的式子
 
-   ![image-20220316092824604](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316092824604.png)
+   ![image-20220316092824604](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316092824604.png)
 
 2. 同样是使用高斯分布，但是SAC用神经网络输出的是**两组数** $\mu,\sigma$，他把这两个都作为了网络的输出。而PPO，TRPO，VPG这几种也使用分布的算法，只是用神经网络输出 $\mu$，而把方差作为一个单独的变量进行优化。（**为什么在SAC中使用单独方差会失灵？因为使用了重参数化，重参数化时需要用到网络输出的方差进行重参数化，如果把方差作为单独变量，会导致重参数化之后的动作与之前的网络梯度中断！**）
 
 3. 使用了**重参数化技巧**，因为优化的时候需要求一个 Q网络对于动作的一阶导数再求对$\theta$ 的二阶导数，所以动作需要**进行重参数化手段才能有二阶梯度**，否则只用平时的采样会没有梯度！
 
-   ![image-20220316095250413](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316095250413.png)
+   ![image-20220316095250413](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316095250413.png)
 
-![image-20220316094411131](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316094411131.png)
+![image-20220316094411131](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316094411131.png)
 
-![image-20220315084924720](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315084924720.png)
+![image-20220315084924720](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315084924720.png)
 
-![image-20220315132757757](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315132757757.png)
+![image-20220315132757757](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315132757757.png)
 
-![image-20220315132815216](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315132815216.png)
+![image-20220315132815216](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315132815216.png)
 
 更新策略
 
-![image-20220315143025988](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315143025988.png)
+![image-20220315143025988](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315143025988.png)
 
-![image-20220315143037726](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315143037726.png)
+![image-20220315143037726](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315143037726.png)
 
-![image-20220317091226705](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317091226705.png)
+![image-20220317091226705](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317091226705.png)
 
 通过伪代码，我们可以看到，
 
@@ -844,7 +862,7 @@ $$
 
 也就是说，现在的actor的主要功能`forward`仅需要和之前的 `ac.step` 这个函数一样，**仅需要自己产生动作然后求概率，不需要接收外部的动作求概率**！
 
-`forward(s)` 函数需要既支持批量传入，也需要支持单个传入，驱动环境运行！求动作必须要带梯度！因为![image-20220315170614775](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315170614775.png)函数需要从分布里面采集动作，需要梯度！
+`forward(s)` 函数需要既支持批量传入，也需要支持单个传入，驱动环境运行！求动作必须要带梯度！因为![image-20220315170614775](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315170614775.png)函数需要从分布里面采集动作，需要梯度！
 
 **SAC的forward包含了之前`ac.step`函数的功能，并且不需要传入其他动作求概率，所以SAC程序里面没有`ac.step`函数了**
 
@@ -856,11 +874,11 @@ Normal分布的sample和rsample的区别，**rsample是带梯度的sample，全�
 
 重参数化的公式是：
 
-![image-20220316092554240](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316092554240.png)
+![image-20220316092554240](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316092554240.png)
 
 但是pytorch的dist自带的`dist.rsample()`函数的公式是
 
-![image-20220316101420106](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316101420106.png)
+![image-20220316101420106](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316101420106.png)
 
 **我们需要在pytorch的rsample之后，手动加一个tanh！**这样才能真正达到重参数化！
 
@@ -870,15 +888,15 @@ Normal分布的sample和rsample的区别，**rsample是带梯度的sample，全�
 
 
 
-$u$=![image-20220316092554240](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316092554240.png)
+$u$=![image-20220316092554240](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316092554240.png)
 
 我们想要求原来没有变形的 $a$ 的 $log\pi(a|s)$ 就需要用下面的式子来计算！ 
 
-![image-20220316092824604](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316092824604.png)
+![image-20220316092824604](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316092824604.png)
 
-![image-20220317083709866](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317083709866.png)
+![image-20220317083709866](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317083709866.png)
 
-![image-20220315164145655](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315164145655.png)
+![image-20220315164145655](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315164145655.png)
 
 ```python
 	def compute_loss_q(self, data):
@@ -959,9 +977,9 @@ $u$=![image-20220316092554240](D:\科研日志\2022-3-4-进行spinup项目.asset
 
 
 
-![image-20220317125702016](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317125702016.png)
+![image-20220317125702016](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317125702016.png)
 
-![image-20220315191441506](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220315191441506.png)
+![image-20220315191441506](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220315191441506.png)
 
 
 
@@ -981,7 +999,7 @@ SAC2019 和 2018 最大的区别就是，多了一个 自动优化的熵参数 $
 
 也就是引入了一个温度参数的代价函数去优化 $\alpha$ ，其它的优化函数和之前一致。
 
-![image-20220316115657877](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220316115657877.png)
+![image-20220316115657877](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220316115657877.png)
 
 
 
@@ -1172,7 +1190,7 @@ class MLPQFunction(nn.Module):
 
 
 
-![image-20220317125820023](D:\科研日志\2022-3-4-进行spinup项目.assets\image-20220317125820023.png)
+![image-20220317125820023](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220317125820023.png)
 
 
 

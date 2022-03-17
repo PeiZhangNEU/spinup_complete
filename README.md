@@ -1,0 +1,2 @@
+# spinup_complete
+对spinup代码的完善和整理，加入了pytorch版本的trpo以及离散版本的SAC

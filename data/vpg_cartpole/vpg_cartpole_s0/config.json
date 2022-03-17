@@ -1,0 +1,489 @@
+{
+    "ac_kwargs":	{
+        "hidden_sizes":	[
+            64,
+            64
+        ]
+    },
+    "actor_critic":	"MLPActorCritic",
+    "device":	"cuda:0",
+    "env_fn":	"<function <lambda> at 0x7fa5878f38c0>",
+    "exp_name":	"vpg_cartpole",
+    "gamma":	0.99,
+    "lam":	0.97,
+    "logger_kwargs":	{
+        "exp_name":	"vpg_cartpole",
+        "output_dir":	"/home/zp/deeplearning/spinningup_project/data/vpg_cartpole/vpg_cartpole_s0"
+    },
+    "pi_lr":	0.0003,
+    "self":	{
+        "<spinup.alogos.vpg.vpg.vpg object at 0x7fa5735a8690>":	{
+            "ac":	{
+                "MLPActorCritic(\n  (pi): MLPCategoricalActor(\n    (logits_net): Sequential(\n      (0): Linear(in_features=4, out_features=64, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=64, out_features=64, bias=True)\n      (3): Tanh()\n      (4): Linear(in_features=64, out_features=2, bias=True)\n      (5): Identity()\n    )\n  )\n  (v): MLPCritic(\n    (v_net): Sequential(\n      (0): Linear(in_features=4, out_features=64, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=64, out_features=64, bias=True)\n      (3): Tanh()\n      (4): Linear(in_features=64, out_features=1, bias=True)\n      (5): Identity()\n    )\n  )\n)":	{
+                    "_backward_hooks":	{},
+                    "_buffers":	{},
+                    "_forward_hooks":	{},
+                    "_forward_pre_hooks":	{},
+                    "_is_full_backward_hook":	null,
+                    "_load_state_dict_pre_hooks":	{},
+                    "_modules":	{
+                        "pi":	{
+                            "MLPCategoricalActor(\n  (logits_net): Sequential(\n    (0): Linear(in_features=4, out_features=64, bias=True)\n    (1): Tanh()\n    (2): Linear(in_features=64, out_features=64, bias=True)\n    (3): Tanh()\n    (4): Linear(in_features=64, out_features=2, bias=True)\n    (5): Identity()\n  )\n)":	{
+                                "_backward_hooks":	{},
+                                "_buffers":	{},
+                                "_forward_hooks":	{},
+                                "_forward_pre_hooks":	{},
+                                "_is_full_backward_hook":	null,
+                                "_load_state_dict_pre_hooks":	{},
+                                "_modules":	{
+                                    "logits_net":	{
+                                        "Sequential(\n  (0): Linear(in_features=4, out_features=64, bias=True)\n  (1): Tanh()\n  (2): Linear(in_features=64, out_features=64, bias=True)\n  (3): Tanh()\n  (4): Linear(in_features=64, out_features=2, bias=True)\n  (5): Identity()\n)":	{
+                                            "_backward_hooks":	{},
+                                            "_buffers":	{},
+                                            "_forward_hooks":	{},
+                                            "_forward_pre_hooks":	{},
+                                            "_is_full_backward_hook":	null,
+                                            "_load_state_dict_pre_hooks":	{},
+                                            "_modules":	{
+                                                "0":	{
+                                                    "Linear(in_features=4, out_features=64, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([-3.9197e-01,  9.1068e-02, -1.1263e-01,  4.5150e-01, -5.1866e-02,\n        -1.1043e-01,  3.5962e-02, -3.5302e-01, -4.8554e-01, -2.9028e-01,\n        -5.0954e-02,  4.7983e-01,  4.4522e-01, -4.1129e-01,  2.6808e-01,\n         2.5830e-02, -3.2367e-02,  6.4252e-02,  4.3025e-01,  1.7216e-02,\n        -2.6129e-01, -4.5808e-01, -2.1146e-01, -9.5351e-02, -1.0034e-01,\n        -1.9245e-01, -1.9213e-01,  4.0226e-01,  2.9717e-01, -2.5801e-01,\n         4.6808e-01, -2.4617e-01,  1.8350e-01,  4.2187e-01,  3.6072e-01,\n         5.2284e-02,  4.0194e-01, -1.8089e-02, -4.3615e-01, -3.4074e-01,\n         3.5416e-01,  4.6652e-01,  4.2530e-01, -1.1355e-01, -2.8233e-01,\n         3.6220e-01, -3.7882e-01, -4.8354e-01,  1.2328e-01,  4.9900e-01,\n         3.7108e-01, -4.7702e-03,  4.0915e-01,  2.5619e-01, -1.1324e-01,\n         3.9180e-01,  4.2586e-03,  3.4428e-04, -3.9455e-01,  1.1332e-01,\n        -2.9545e-01, -3.8518e-01,  1.4975e-01, -9.8285e-02], device='cuda:0',\n       requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[-0.1505,  0.1133,  0.0116, -0.3464],\n        [-0.1077,  0.1778, -0.1501, -0.3642],\n        [-0.3029, -0.2717,  0.2294,  0.0337],\n        [-0.3806,  0.3128,  0.4952,  0.3661],\n        [-0.1405, -0.3520, -0.4923,  0.3291],\n        [-0.1579, -0.0957,  0.3687,  0.0567],\n        [-0.2694, -0.1696, -0.2675, -0.3610],\n        [ 0.3696,  0.1958,  0.3653,  0.4926],\n        [-0.4854, -0.2582, -0.1929,  0.0470],\n        [ 0.1417, -0.0506,  0.1546,  0.3364],\n        [ 0.2855, -0.1142, -0.2533,  0.2284],\n        [ 0.0539,  0.0913,  0.1013,  0.1250],\n        [ 0.1140,  0.4437,  0.0995, -0.4406],\n        [-0.1138, -0.1582, -0.3501,  0.1467],\n        [ 0.4705,  0.1355, -0.3211, -0.0468],\n        [-0.0853,  0.0411,  0.0843, -0.2530],\n        [ 0.1148,  0.4222,  0.2201,  0.3763],\n        [ 0.3279, -0.0507, -0.0955, -0.2126],\n        [ 0.0354,  0.4439,  0.3239,  0.3693],\n        [-0.2668,  0.2616,  0.2938, -0.1270],\n        [ 0.4587,  0.0381, -0.4935,  0.2230],\n        [-0.2883,  0.2232, -0.0150,  0.2957],\n        [-0.0881,  0.2177,  0.4674, -0.2327],\n        [-0.1766, -0.0048,  0.3907, -0.3456],\n        [ 0.2419,  0.2286,  0.2878,  0.0835],\n        [-0.4366,  0.0499, -0.3413,  0.1227],\n        [-0.2093,  0.0504, -0.3576,  0.0987],\n        [-0.0926, -0.1646,  0.3234, -0.3455],\n        [ 0.1632,  0.4573, -0.3138, -0.1392],\n        [-0.4294,  0.3125, -0.1737, -0.1124],\n        [ 0.2021, -0.1339, -0.3560,  0.2766],\n        [-0.1482, -0.1420,  0.1970,  0.1307],\n        [ 0.2111, -0.2493, -0.0554, -0.2315],\n        [-0.3819, -0.2350,  0.4047, -0.2397],\n        [ 0.0943,  0.2178, -0.3840, -0.1523],\n        [-0.2523,  0.4294, -0.0589,  0.4949],\n        [ 0.1474,  0.4393,  0.4219,  0.2635],\n        [ 0.3110,  0.2579,  0.2698,  0.4033],\n        [ 0.1895,  0.4938,  0.1275, -0.0576],\n        [-0.1956, -0.3025,  0.0700, -0.1927],\n        [ 0.2765,  0.2865,  0.0318, -0.2907],\n        [ 0.4458,  0.2140,  0.4388, -0.1514],\n        [-0.2974, -0.0117, -0.4394, -0.3169],\n        [ 0.0128, -0.1105,  0.1595,  0.3855],\n        [-0.3395, -0.3194,  0.4937,  0.3405],\n        [ 0.0596, -0.4707, -0.1059,  0.0804],\n        [ 0.1118, -0.0047,  0.0997,  0.0113],\n        [-0.2697,  0.3337,  0.3154, -0.2587],\n        [ 0.3095, -0.4756, -0.2301, -0.0369],\n        [-0.1265, -0.4301,  0.3045, -0.3902],\n        [-0.0959,  0.2169,  0.1106,  0.1167],\n        [ 0.0729, -0.1725, -0.3210, -0.0013],\n        [-0.2508,  0.2197,  0.0381,  0.3952],\n        [ 0.3977, -0.4840, -0.3631, -0.0587],\n        [-0.3839,  0.4573, -0.1542,  0.4909],\n        [-0.4810,  0.3594,  0.3046,  0.4089],\n        [ 0.2527,  0.0029, -0.1175, -0.0886],\n        [-0.0581, -0.4614, -0.4337,  0.2912],\n        [-0.0020, -0.3607, -0.3383, -0.1765],\n        [ 0.0627,  0.0920,  0.0689,  0.2382],\n        [ 0.2756,  0.2829,  0.0784,  0.3915],\n        [ 0.4280,  0.0826, -0.1441,  0.3456],\n        [-0.4993,  0.1223, -0.2471,  0.3246],\n        [ 0.2676, -0.2913,  0.0341,  0.2298]], device='cuda:0',\n       requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	4,
+                                                        "out_features":	64,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "1":	{
+                                                    "Tanh()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "2":	{
+                                                    "Linear(in_features=64, out_features=64, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([ 0.0867,  0.0270, -0.0783,  0.1042,  0.0351,  0.1168, -0.0589, -0.0830,\n        -0.0646, -0.0934,  0.0691,  0.0485,  0.0735, -0.0852,  0.0414,  0.1221,\n        -0.0039, -0.0645,  0.0589, -0.1065,  0.0190, -0.0234, -0.0412,  0.0134,\n        -0.0123, -0.0624,  0.0722,  0.0858, -0.0124, -0.0337,  0.1040, -0.0382,\n        -0.0691, -0.0628,  0.0342, -0.0036, -0.0607,  0.0402, -0.0124,  0.0708,\n         0.0841, -0.0008, -0.0054,  0.0833,  0.0188, -0.1163, -0.0497, -0.1019,\n        -0.0550,  0.0220, -0.0095,  0.0219, -0.0358,  0.0108, -0.0013,  0.0583,\n         0.0200,  0.0964, -0.1018, -0.1180,  0.0724,  0.0627, -0.0610, -0.0014],\n       device='cuda:0', requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[-0.0840, -0.0620,  0.1124,  ..., -0.0111, -0.0458, -0.0901],\n        [ 0.0859, -0.0615, -0.0032,  ...,  0.0636,  0.0164,  0.0217],\n        [-0.0682,  0.0848, -0.0260,  ..., -0.0699,  0.0261, -0.0855],\n        ...,\n        [ 0.1242, -0.0136, -0.0228,  ...,  0.0362,  0.1088, -0.1163],\n        [-0.0695, -0.0828, -0.0411,  ...,  0.1110, -0.1082, -0.0402],\n        [ 0.0745,  0.0521,  0.0303,  ...,  0.0796,  0.1200, -0.0787]],\n       device='cuda:0', requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	64,
+                                                        "out_features":	64,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "3":	{
+                                                    "Tanh()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "4":	{
+                                                    "Linear(in_features=64, out_features=2, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([ 0.0326, -0.0505], device='cuda:0', requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[-0.1138, -0.0158, -0.0039, -0.0443, -0.0018,  0.0148,  0.0041,  0.0178,\n          0.1130, -0.0204,  0.0108,  0.0512, -0.0994, -0.0785,  0.0499,  0.0180,\n         -0.0470,  0.0348, -0.0785, -0.0052, -0.0175, -0.0120, -0.0211, -0.0768,\n          0.0401,  0.1158, -0.0954, -0.1103,  0.1055,  0.0948, -0.0905, -0.0808,\n          0.0314,  0.0121, -0.1234, -0.0326,  0.0859,  0.0378, -0.1177, -0.0211,\n         -0.1093,  0.0829,  0.0996,  0.0815,  0.0368, -0.1022, -0.0814, -0.1218,\n          0.0242, -0.0974,  0.0471, -0.0273, -0.0672,  0.0093, -0.0816,  0.1047,\n          0.0105,  0.0224,  0.0577, -0.0870, -0.1057, -0.1099, -0.1034,  0.0686],\n        [ 0.1143, -0.0626, -0.0174,  0.1110, -0.0152, -0.0432,  0.1235,  0.1246,\n          0.1136, -0.1013,  0.0355,  0.0425, -0.0099, -0.0169, -0.0663, -0.0707,\n         -0.1035,  0.0041,  0.1064,  0.0286,  0.0924,  0.0163, -0.0371, -0.0358,\n          0.0310,  0.0756, -0.0406,  0.0784, -0.0896,  0.0540,  0.1033, -0.0103,\n          0.0934,  0.0051,  0.1214, -0.0571, -0.1175, -0.0899,  0.0328,  0.0002,\n         -0.0327,  0.0588, -0.0532, -0.0518,  0.0606, -0.0438,  0.1109, -0.1068,\n         -0.1007,  0.1046, -0.1088,  0.0886,  0.0980,  0.0145,  0.1135, -0.0597,\n         -0.0733,  0.0857, -0.0471, -0.0137,  0.0890, -0.0264,  0.0294, -0.0158]],\n       device='cuda:0', requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	64,
+                                                        "out_features":	2,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "5":	{
+                                                    "Identity()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                }
+                                            },
+                                            "_non_persistent_buffers_set":	"set()",
+                                            "_parameters":	{},
+                                            "_state_dict_hooks":	{},
+                                            "training":	true
+                                        }
+                                    }
+                                },
+                                "_non_persistent_buffers_set":	"set()",
+                                "_parameters":	{},
+                                "_state_dict_hooks":	{},
+                                "training":	true
+                            }
+                        },
+                        "v":	{
+                            "MLPCritic(\n  (v_net): Sequential(\n    (0): Linear(in_features=4, out_features=64, bias=True)\n    (1): Tanh()\n    (2): Linear(in_features=64, out_features=64, bias=True)\n    (3): Tanh()\n    (4): Linear(in_features=64, out_features=1, bias=True)\n    (5): Identity()\n  )\n)":	{
+                                "_backward_hooks":	{},
+                                "_buffers":	{},
+                                "_forward_hooks":	{},
+                                "_forward_pre_hooks":	{},
+                                "_is_full_backward_hook":	null,
+                                "_load_state_dict_pre_hooks":	{},
+                                "_modules":	{
+                                    "v_net":	{
+                                        "Sequential(\n  (0): Linear(in_features=4, out_features=64, bias=True)\n  (1): Tanh()\n  (2): Linear(in_features=64, out_features=64, bias=True)\n  (3): Tanh()\n  (4): Linear(in_features=64, out_features=1, bias=True)\n  (5): Identity()\n)":	{
+                                            "_backward_hooks":	{},
+                                            "_buffers":	{},
+                                            "_forward_hooks":	{},
+                                            "_forward_pre_hooks":	{},
+                                            "_is_full_backward_hook":	null,
+                                            "_load_state_dict_pre_hooks":	{},
+                                            "_modules":	{
+                                                "0":	{
+                                                    "Linear(in_features=4, out_features=64, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([-0.1934,  0.4048, -0.1319, -0.0268,  0.3584, -0.4356,  0.1742, -0.3405,\n        -0.1206,  0.3009,  0.1131,  0.4864,  0.4830,  0.4271,  0.4680,  0.3674,\n         0.3337, -0.1175,  0.1062,  0.4485,  0.0731, -0.1714, -0.0961, -0.4326,\n        -0.4971,  0.2412,  0.3749,  0.3856,  0.1645, -0.1873, -0.0524, -0.0312,\n         0.2668,  0.3545, -0.0851,  0.2679,  0.0208, -0.0328, -0.0633,  0.3975,\n        -0.1853,  0.1250, -0.4157,  0.4440, -0.2430, -0.2615,  0.4044, -0.4619,\n        -0.1266,  0.4826, -0.4474, -0.2967,  0.1726, -0.4914, -0.0521, -0.2389,\n        -0.0179,  0.4944,  0.0911, -0.4865,  0.1948,  0.3818, -0.0664, -0.1403],\n       device='cuda:0', requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[-0.3064, -0.0349, -0.0314,  0.2418],\n        [-0.3587, -0.4313, -0.2129,  0.2481],\n        [ 0.0242,  0.2720, -0.4049,  0.2407],\n        [ 0.3997, -0.4810,  0.1407,  0.2019],\n        [ 0.3648, -0.3213,  0.2772,  0.0191],\n        [-0.0682,  0.4623, -0.2639,  0.1962],\n        [ 0.4582,  0.0995,  0.3226,  0.2487],\n        [-0.1611,  0.4806, -0.2162, -0.2963],\n        [ 0.3570,  0.2685, -0.3739,  0.4048],\n        [-0.0761,  0.3557,  0.1653, -0.3463],\n        [-0.2557,  0.4698,  0.1823, -0.3720],\n        [ 0.3245,  0.2077, -0.3601, -0.0484],\n        [-0.2642, -0.4249,  0.4092, -0.1355],\n        [-0.0240, -0.3780,  0.2605, -0.2844],\n        [ 0.0532, -0.0297, -0.4947,  0.2441],\n        [-0.4392, -0.0226, -0.3137, -0.4524],\n        [-0.4780, -0.2638, -0.2465, -0.3564],\n        [-0.4989,  0.0952, -0.1519, -0.0714],\n        [-0.0518,  0.2271, -0.0141, -0.3607],\n        [-0.1302,  0.0669, -0.3053,  0.4846],\n        [-0.0671, -0.3047, -0.0483, -0.4211],\n        [ 0.2957,  0.0946, -0.3449,  0.3336],\n        [-0.3035, -0.3589, -0.2892,  0.4546],\n        [ 0.0766,  0.3911,  0.2602,  0.3313],\n        [-0.4234,  0.4162,  0.3923, -0.1546],\n        [-0.3938, -0.4354, -0.4637, -0.0908],\n        [-0.3306, -0.2846, -0.0817, -0.0776],\n        [-0.0807,  0.4337, -0.4564,  0.0763],\n        [-0.2389, -0.2613,  0.4902,  0.0325],\n        [-0.1459,  0.3431,  0.1530,  0.2638],\n        [-0.1657,  0.3976,  0.3951,  0.3048],\n        [ 0.3869,  0.0471,  0.0864,  0.1185],\n        [-0.3253,  0.4842, -0.0378,  0.0913],\n        [ 0.0559, -0.1420,  0.3440, -0.4529],\n        [ 0.1576,  0.1180,  0.2999, -0.3574],\n        [ 0.0546,  0.0811,  0.2521,  0.1952],\n        [-0.0126, -0.0924,  0.1705, -0.1040],\n        [-0.0063,  0.0028, -0.4742, -0.1588],\n        [ 0.1701,  0.0037,  0.2784,  0.3253],\n        [-0.3288,  0.0446,  0.1074,  0.2505],\n        [ 0.1442,  0.2913, -0.2903,  0.2393],\n        [ 0.4473, -0.3873, -0.3377, -0.3065],\n        [ 0.4983, -0.1542, -0.1176,  0.3613],\n        [-0.4301, -0.0999,  0.4459, -0.0467],\n        [-0.1369, -0.3015,  0.2948,  0.0332],\n        [ 0.4783,  0.1940,  0.1581,  0.3377],\n        [ 0.3352,  0.2903, -0.1638, -0.3610],\n        [ 0.4328,  0.2800, -0.1680, -0.4793],\n        [-0.1201,  0.0431, -0.0088,  0.2553],\n        [-0.0517,  0.0466, -0.0985,  0.1197],\n        [ 0.4436, -0.1029,  0.2250, -0.0851],\n        [-0.4197, -0.2114, -0.2509, -0.3183],\n        [ 0.4693,  0.3271, -0.4323,  0.0533],\n        [ 0.0272, -0.0755,  0.1740, -0.3431],\n        [-0.1964, -0.2167, -0.3717, -0.0923],\n        [ 0.0918, -0.0096, -0.4054,  0.1956],\n        [ 0.4081,  0.0649,  0.0192,  0.0338],\n        [-0.3556,  0.2857, -0.3758, -0.4245],\n        [-0.0443,  0.2221,  0.3735, -0.0906],\n        [ 0.0438,  0.1883, -0.0777,  0.3429],\n        [ 0.0070,  0.4695,  0.2491,  0.3178],\n        [-0.2635,  0.4461,  0.1963, -0.3359],\n        [ 0.0922, -0.4456, -0.2183, -0.1693],\n        [ 0.0911, -0.4469,  0.3291, -0.4328]], device='cuda:0',\n       requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	4,
+                                                        "out_features":	64,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "1":	{
+                                                    "Tanh()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "2":	{
+                                                    "Linear(in_features=64, out_features=64, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([ 0.0576,  0.0274,  0.0622, -0.0320,  0.1083, -0.0835,  0.0349,  0.0304,\n         0.0667, -0.0070,  0.0695, -0.0298, -0.0466,  0.0570,  0.1165, -0.0438,\n         0.0275,  0.0749,  0.0818, -0.0158,  0.0557, -0.0079,  0.0312, -0.0879,\n        -0.0972, -0.0713, -0.0527, -0.1228, -0.0602,  0.1225, -0.0227,  0.1027,\n        -0.0252, -0.0650, -0.0078, -0.0166,  0.1215, -0.0271,  0.0025,  0.0722,\n        -0.0876,  0.0430,  0.0787,  0.0525,  0.1178, -0.0334,  0.0978, -0.0276,\n         0.0835,  0.0598, -0.0695,  0.0751, -0.1048,  0.1069,  0.0086, -0.0989,\n        -0.0072, -0.0742,  0.0342, -0.1108, -0.0154, -0.0981, -0.0017,  0.0948],\n       device='cuda:0', requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[ 0.0951, -0.0951, -0.0954,  ...,  0.1038, -0.0093,  0.0516],\n        [ 0.0956, -0.1212,  0.0820,  ..., -0.0643,  0.0880,  0.0386],\n        [ 0.0927,  0.0807,  0.0131,  ...,  0.0479,  0.0964,  0.0053],\n        ...,\n        [ 0.0638, -0.0388,  0.0460,  ...,  0.1154,  0.1198,  0.0665],\n        [-0.1136,  0.0961, -0.0207,  ...,  0.0154, -0.0666,  0.0484],\n        [-0.1186,  0.0202,  0.0341,  ..., -0.0952, -0.0163, -0.0046]],\n       device='cuda:0', requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	64,
+                                                        "out_features":	64,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "3":	{
+                                                    "Tanh()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "4":	{
+                                                    "Linear(in_features=64, out_features=1, bias=True)":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{
+                                                            "bias":	"Parameter containing:\ntensor([0.0643], device='cuda:0', requires_grad=True)",
+                                                            "weight":	"Parameter containing:\ntensor([[-0.0139, -0.0181, -0.0813,  0.0443, -0.1109,  0.0477, -0.0559,  0.0669,\n         -0.0735, -0.0948, -0.0341, -0.0435,  0.0406, -0.0053,  0.0427, -0.0496,\n         -0.0398,  0.0068,  0.0570,  0.0646,  0.1186,  0.0671,  0.0395, -0.1099,\n         -0.0040, -0.0688,  0.0369, -0.0111,  0.0323, -0.0076, -0.0294, -0.0845,\n          0.0547,  0.0345,  0.0983,  0.0088,  0.0301, -0.1211, -0.1054, -0.0298,\n         -0.0614,  0.0755,  0.0524,  0.0135,  0.0718,  0.0752, -0.1233, -0.0229,\n          0.1114, -0.0951, -0.0587, -0.0883,  0.0798, -0.0580,  0.0327, -0.0191,\n          0.0119,  0.0306,  0.1053, -0.0603,  0.1062,  0.0455, -0.1121,  0.1018]],\n       device='cuda:0', requires_grad=True)"
+                                                        },
+                                                        "_state_dict_hooks":	{},
+                                                        "in_features":	64,
+                                                        "out_features":	1,
+                                                        "training":	true
+                                                    }
+                                                },
+                                                "5":	{
+                                                    "Identity()":	{
+                                                        "_backward_hooks":	{},
+                                                        "_buffers":	{},
+                                                        "_forward_hooks":	{},
+                                                        "_forward_pre_hooks":	{},
+                                                        "_is_full_backward_hook":	null,
+                                                        "_load_state_dict_pre_hooks":	{},
+                                                        "_modules":	{},
+                                                        "_non_persistent_buffers_set":	"set()",
+                                                        "_parameters":	{},
+                                                        "_state_dict_hooks":	{},
+                                                        "training":	true
+                                                    }
+                                                }
+                                            },
+                                            "_non_persistent_buffers_set":	"set()",
+                                            "_parameters":	{},
+                                            "_state_dict_hooks":	{},
+                                            "training":	true
+                                        }
+                                    }
+                                },
+                                "_non_persistent_buffers_set":	"set()",
+                                "_parameters":	{},
+                                "_state_dict_hooks":	{},
+                                "training":	true
+                            }
+                        }
+                    },
+                    "_non_persistent_buffers_set":	"set()",
+                    "_parameters":	{},
+                    "_state_dict_hooks":	{},
+                    "training":	true
+                }
+            },
+            "act_dim":	[],
+            "buf":	{
+                "<spinup.alogos.vpg.vpg.VPGBuffer object at 0x7fa572eadfd0>":	{
+                    "act_buf":	"[0. 0. 0. ... 0. 0. 0.]",
+                    "adv_buf":	"[0. 0. 0. ... 0. 0. 0.]",
+                    "device":	"cuda:0",
+                    "gamma":	0.99,
+                    "lam":	0.97,
+                    "logp_buf":	"[0. 0. 0. ... 0. 0. 0.]",
+                    "max_size":	2000,
+                    "obs_buf":	"[[0. 0. 0. 0.]\n [0. 0. 0. 0.]\n [0. 0. 0. 0.]\n ...\n [0. 0. 0. 0.]\n [0. 0. 0. 0.]\n [0. 0. 0. 0.]]",
+                    "path_start_idx":	0,
+                    "ptr":	0,
+                    "ret_buf":	"[0. 0. 0. ... 0. 0. 0.]",
+                    "rew_buf":	"[0. 0. 0. ... 0. 0. 0.]",
+                    "val_buf":	"[0. 0. 0. ... 0. 0. 0.]"
+                }
+            },
+            "device":	"cuda:0",
+            "env":	{
+                "<TimeLimit<CartPoleEnv<CartPole-v0>>>":	{
+                    "_action_space":	null,
+                    "_elapsed_steps":	null,
+                    "_max_episode_steps":	200,
+                    "_metadata":	null,
+                    "_observation_space":	null,
+                    "_reward_range":	null,
+                    "env":	{
+                        "<CartPoleEnv<CartPole-v0>>":	{
+                            "action_space":	{
+                                "Discrete(2)":	{
+                                    "_np_random":	null,
+                                    "_shape":	[],
+                                    "dtype":	"int64",
+                                    "n":	2
+                                }
+                            },
+                            "force_mag":	10.0,
+                            "gravity":	9.8,
+                            "kinematics_integrator":	"euler",
+                            "length":	0.5,
+                            "masscart":	1.0,
+                            "masspole":	0.1,
+                            "np_random":	"RandomState(MT19937)",
+                            "observation_space":	{
+                                "Box([-4.8000002e+00 -3.4028235e+38 -4.1887903e-01 -3.4028235e+38], [4.8000002e+00 3.4028235e+38 4.1887903e-01 3.4028235e+38], (4,), float32)":	{
+                                    "_np_random":	null,
+                                    "_shape":	[
+                                        4
+                                    ],
+                                    "bounded_above":	"[ True  True  True  True]",
+                                    "bounded_below":	"[ True  True  True  True]",
+                                    "dtype":	"float32",
+                                    "high":	"[4.8000002e+00 3.4028235e+38 4.1887903e-01 3.4028235e+38]",
+                                    "low":	"[-4.8000002e+00 -3.4028235e+38 -4.1887903e-01 -3.4028235e+38]"
+                                }
+                            },
+                            "polemass_length":	0.05,
+                            "spec":	{
+                                "EnvSpec(CartPole-v0)":	{
+                                    "_env_name":	"CartPole",
+                                    "_kwargs":	{},
+                                    "entry_point":	"gym.envs.classic_control:CartPoleEnv",
+                                    "id":	"CartPole-v0",
+                                    "max_episode_steps":	200,
+                                    "nondeterministic":	false,
+                                    "order_enforce":	true,
+                                    "reward_threshold":	195.0
+                                }
+                            },
+                            "state":	null,
+                            "steps_beyond_done":	null,
+                            "tau":	0.02,
+                            "theta_threshold_radians":	0.20943951023931953,
+                            "total_mass":	1.1,
+                            "viewer":	null,
+                            "x_threshold":	2.4
+                        }
+                    }
+                }
+            },
+            "logger":	{
+                "<spinup.utils.logx.EpochLogger object at 0x7fa572ec0310>":	{
+                    "epoch_dict":	{},
+                    "exp_name":	"vpg_cartpole",
+                    "first_row":	true,
+                    "log_current_row":	{},
+                    "log_headers":	[],
+                    "output_dir":	"/home/zp/deeplearning/spinningup_project/data/vpg_cartpole/vpg_cartpole_s0",
+                    "output_file":	{
+                        "<_io.TextIOWrapper name='/home/zp/deeplearning/spinningup_project/data/vpg_cartpole/vpg_cartpole_s0/progress.txt' mode='w' encoding='UTF-8'>":	{
+                            "mode":	"w"
+                        }
+                    }
+                }
+            },
+            "obs_dim":	[
+                4
+            ],
+            "pi_optimizer":	{
+                "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.9, 0.999)\n    eps: 1e-08\n    lr: 0.0003\n    weight_decay: 0\n)":	{
+                    "_zero_grad_profile_name":	"Optimizer.zero_grad#Adam.zero_grad",
+                    "defaults":	{
+                        "amsgrad":	false,
+                        "betas":	[
+                            0.9,
+                            0.999
+                        ],
+                        "eps":	1e-08,
+                        "lr":	0.0003,
+                        "weight_decay":	0
+                    },
+                    "param_groups":	[
+                        {
+                            "amsgrad":	false,
+                            "betas":	[
+                                0.9,
+                                0.999
+                            ],
+                            "eps":	1e-08,
+                            "lr":	0.0003,
+                            "params":	[
+                                "Parameter containing:\ntensor([[-0.1505,  0.1133,  0.0116, -0.3464],\n        [-0.1077,  0.1778, -0.1501, -0.3642],\n        [-0.3029, -0.2717,  0.2294,  0.0337],\n        [-0.3806,  0.3128,  0.4952,  0.3661],\n        [-0.1405, -0.3520, -0.4923,  0.3291],\n        [-0.1579, -0.0957,  0.3687,  0.0567],\n        [-0.2694, -0.1696, -0.2675, -0.3610],\n        [ 0.3696,  0.1958,  0.3653,  0.4926],\n        [-0.4854, -0.2582, -0.1929,  0.0470],\n        [ 0.1417, -0.0506,  0.1546,  0.3364],\n        [ 0.2855, -0.1142, -0.2533,  0.2284],\n        [ 0.0539,  0.0913,  0.1013,  0.1250],\n        [ 0.1140,  0.4437,  0.0995, -0.4406],\n        [-0.1138, -0.1582, -0.3501,  0.1467],\n        [ 0.4705,  0.1355, -0.3211, -0.0468],\n        [-0.0853,  0.0411,  0.0843, -0.2530],\n        [ 0.1148,  0.4222,  0.2201,  0.3763],\n        [ 0.3279, -0.0507, -0.0955, -0.2126],\n        [ 0.0354,  0.4439,  0.3239,  0.3693],\n        [-0.2668,  0.2616,  0.2938, -0.1270],\n        [ 0.4587,  0.0381, -0.4935,  0.2230],\n        [-0.2883,  0.2232, -0.0150,  0.2957],\n        [-0.0881,  0.2177,  0.4674, -0.2327],\n        [-0.1766, -0.0048,  0.3907, -0.3456],\n        [ 0.2419,  0.2286,  0.2878,  0.0835],\n        [-0.4366,  0.0499, -0.3413,  0.1227],\n        [-0.2093,  0.0504, -0.3576,  0.0987],\n        [-0.0926, -0.1646,  0.3234, -0.3455],\n        [ 0.1632,  0.4573, -0.3138, -0.1392],\n        [-0.4294,  0.3125, -0.1737, -0.1124],\n        [ 0.2021, -0.1339, -0.3560,  0.2766],\n        [-0.1482, -0.1420,  0.1970,  0.1307],\n        [ 0.2111, -0.2493, -0.0554, -0.2315],\n        [-0.3819, -0.2350,  0.4047, -0.2397],\n        [ 0.0943,  0.2178, -0.3840, -0.1523],\n        [-0.2523,  0.4294, -0.0589,  0.4949],\n        [ 0.1474,  0.4393,  0.4219,  0.2635],\n        [ 0.3110,  0.2579,  0.2698,  0.4033],\n        [ 0.1895,  0.4938,  0.1275, -0.0576],\n        [-0.1956, -0.3025,  0.0700, -0.1927],\n        [ 0.2765,  0.2865,  0.0318, -0.2907],\n        [ 0.4458,  0.2140,  0.4388, -0.1514],\n        [-0.2974, -0.0117, -0.4394, -0.3169],\n        [ 0.0128, -0.1105,  0.1595,  0.3855],\n        [-0.3395, -0.3194,  0.4937,  0.3405],\n        [ 0.0596, -0.4707, -0.1059,  0.0804],\n        [ 0.1118, -0.0047,  0.0997,  0.0113],\n        [-0.2697,  0.3337,  0.3154, -0.2587],\n        [ 0.3095, -0.4756, -0.2301, -0.0369],\n        [-0.1265, -0.4301,  0.3045, -0.3902],\n        [-0.0959,  0.2169,  0.1106,  0.1167],\n        [ 0.0729, -0.1725, -0.3210, -0.0013],\n        [-0.2508,  0.2197,  0.0381,  0.3952],\n        [ 0.3977, -0.4840, -0.3631, -0.0587],\n        [-0.3839,  0.4573, -0.1542,  0.4909],\n        [-0.4810,  0.3594,  0.3046,  0.4089],\n        [ 0.2527,  0.0029, -0.1175, -0.0886],\n        [-0.0581, -0.4614, -0.4337,  0.2912],\n        [-0.0020, -0.3607, -0.3383, -0.1765],\n        [ 0.0627,  0.0920,  0.0689,  0.2382],\n        [ 0.2756,  0.2829,  0.0784,  0.3915],\n        [ 0.4280,  0.0826, -0.1441,  0.3456],\n        [-0.4993,  0.1223, -0.2471,  0.3246],\n        [ 0.2676, -0.2913,  0.0341,  0.2298]], device='cuda:0',\n       requires_grad=True)",
+                                "Parameter containing:\ntensor([-3.9197e-01,  9.1068e-02, -1.1263e-01,  4.5150e-01, -5.1866e-02,\n        -1.1043e-01,  3.5962e-02, -3.5302e-01, -4.8554e-01, -2.9028e-01,\n        -5.0954e-02,  4.7983e-01,  4.4522e-01, -4.1129e-01,  2.6808e-01,\n         2.5830e-02, -3.2367e-02,  6.4252e-02,  4.3025e-01,  1.7216e-02,\n        -2.6129e-01, -4.5808e-01, -2.1146e-01, -9.5351e-02, -1.0034e-01,\n        -1.9245e-01, -1.9213e-01,  4.0226e-01,  2.9717e-01, -2.5801e-01,\n         4.6808e-01, -2.4617e-01,  1.8350e-01,  4.2187e-01,  3.6072e-01,\n         5.2284e-02,  4.0194e-01, -1.8089e-02, -4.3615e-01, -3.4074e-01,\n         3.5416e-01,  4.6652e-01,  4.2530e-01, -1.1355e-01, -2.8233e-01,\n         3.6220e-01, -3.7882e-01, -4.8354e-01,  1.2328e-01,  4.9900e-01,\n         3.7108e-01, -4.7702e-03,  4.0915e-01,  2.5619e-01, -1.1324e-01,\n         3.9180e-01,  4.2586e-03,  3.4428e-04, -3.9455e-01,  1.1332e-01,\n        -2.9545e-01, -3.8518e-01,  1.4975e-01, -9.8285e-02], device='cuda:0',\n       requires_grad=True)",
+                                "Parameter containing:\ntensor([[-0.0840, -0.0620,  0.1124,  ..., -0.0111, -0.0458, -0.0901],\n        [ 0.0859, -0.0615, -0.0032,  ...,  0.0636,  0.0164,  0.0217],\n        [-0.0682,  0.0848, -0.0260,  ..., -0.0699,  0.0261, -0.0855],\n        ...,\n        [ 0.1242, -0.0136, -0.0228,  ...,  0.0362,  0.1088, -0.1163],\n        [-0.0695, -0.0828, -0.0411,  ...,  0.1110, -0.1082, -0.0402],\n        [ 0.0745,  0.0521,  0.0303,  ...,  0.0796,  0.1200, -0.0787]],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([ 0.0867,  0.0270, -0.0783,  0.1042,  0.0351,  0.1168, -0.0589, -0.0830,\n        -0.0646, -0.0934,  0.0691,  0.0485,  0.0735, -0.0852,  0.0414,  0.1221,\n        -0.0039, -0.0645,  0.0589, -0.1065,  0.0190, -0.0234, -0.0412,  0.0134,\n        -0.0123, -0.0624,  0.0722,  0.0858, -0.0124, -0.0337,  0.1040, -0.0382,\n        -0.0691, -0.0628,  0.0342, -0.0036, -0.0607,  0.0402, -0.0124,  0.0708,\n         0.0841, -0.0008, -0.0054,  0.0833,  0.0188, -0.1163, -0.0497, -0.1019,\n        -0.0550,  0.0220, -0.0095,  0.0219, -0.0358,  0.0108, -0.0013,  0.0583,\n         0.0200,  0.0964, -0.1018, -0.1180,  0.0724,  0.0627, -0.0610, -0.0014],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([[-0.1138, -0.0158, -0.0039, -0.0443, -0.0018,  0.0148,  0.0041,  0.0178,\n          0.1130, -0.0204,  0.0108,  0.0512, -0.0994, -0.0785,  0.0499,  0.0180,\n         -0.0470,  0.0348, -0.0785, -0.0052, -0.0175, -0.0120, -0.0211, -0.0768,\n          0.0401,  0.1158, -0.0954, -0.1103,  0.1055,  0.0948, -0.0905, -0.0808,\n          0.0314,  0.0121, -0.1234, -0.0326,  0.0859,  0.0378, -0.1177, -0.0211,\n         -0.1093,  0.0829,  0.0996,  0.0815,  0.0368, -0.1022, -0.0814, -0.1218,\n          0.0242, -0.0974,  0.0471, -0.0273, -0.0672,  0.0093, -0.0816,  0.1047,\n          0.0105,  0.0224,  0.0577, -0.0870, -0.1057, -0.1099, -0.1034,  0.0686],\n        [ 0.1143, -0.0626, -0.0174,  0.1110, -0.0152, -0.0432,  0.1235,  0.1246,\n          0.1136, -0.1013,  0.0355,  0.0425, -0.0099, -0.0169, -0.0663, -0.0707,\n         -0.1035,  0.0041,  0.1064,  0.0286,  0.0924,  0.0163, -0.0371, -0.0358,\n          0.0310,  0.0756, -0.0406,  0.0784, -0.0896,  0.0540,  0.1033, -0.0103,\n          0.0934,  0.0051,  0.1214, -0.0571, -0.1175, -0.0899,  0.0328,  0.0002,\n         -0.0327,  0.0588, -0.0532, -0.0518,  0.0606, -0.0438,  0.1109, -0.1068,\n         -0.1007,  0.1046, -0.1088,  0.0886,  0.0980,  0.0145,  0.1135, -0.0597,\n         -0.0733,  0.0857, -0.0471, -0.0137,  0.0890, -0.0264,  0.0294, -0.0158]],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([ 0.0326, -0.0505], device='cuda:0', requires_grad=True)"
+                            ],
+                            "weight_decay":	0
+                        }
+                    ],
+                    "state":	{}
+                }
+            },
+            "steps_per_epoch":	2000,
+            "train_v_iters":	80,
+            "vf_optimizer":	{
+                "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.9, 0.999)\n    eps: 1e-08\n    lr: 0.001\n    weight_decay: 0\n)":	{
+                    "_zero_grad_profile_name":	"Optimizer.zero_grad#Adam.zero_grad",
+                    "defaults":	{
+                        "amsgrad":	false,
+                        "betas":	[
+                            0.9,
+                            0.999
+                        ],
+                        "eps":	1e-08,
+                        "lr":	0.001,
+                        "weight_decay":	0
+                    },
+                    "param_groups":	[
+                        {
+                            "amsgrad":	false,
+                            "betas":	[
+                                0.9,
+                                0.999
+                            ],
+                            "eps":	1e-08,
+                            "lr":	0.001,
+                            "params":	[
+                                "Parameter containing:\ntensor([[-0.3064, -0.0349, -0.0314,  0.2418],\n        [-0.3587, -0.4313, -0.2129,  0.2481],\n        [ 0.0242,  0.2720, -0.4049,  0.2407],\n        [ 0.3997, -0.4810,  0.1407,  0.2019],\n        [ 0.3648, -0.3213,  0.2772,  0.0191],\n        [-0.0682,  0.4623, -0.2639,  0.1962],\n        [ 0.4582,  0.0995,  0.3226,  0.2487],\n        [-0.1611,  0.4806, -0.2162, -0.2963],\n        [ 0.3570,  0.2685, -0.3739,  0.4048],\n        [-0.0761,  0.3557,  0.1653, -0.3463],\n        [-0.2557,  0.4698,  0.1823, -0.3720],\n        [ 0.3245,  0.2077, -0.3601, -0.0484],\n        [-0.2642, -0.4249,  0.4092, -0.1355],\n        [-0.0240, -0.3780,  0.2605, -0.2844],\n        [ 0.0532, -0.0297, -0.4947,  0.2441],\n        [-0.4392, -0.0226, -0.3137, -0.4524],\n        [-0.4780, -0.2638, -0.2465, -0.3564],\n        [-0.4989,  0.0952, -0.1519, -0.0714],\n        [-0.0518,  0.2271, -0.0141, -0.3607],\n        [-0.1302,  0.0669, -0.3053,  0.4846],\n        [-0.0671, -0.3047, -0.0483, -0.4211],\n        [ 0.2957,  0.0946, -0.3449,  0.3336],\n        [-0.3035, -0.3589, -0.2892,  0.4546],\n        [ 0.0766,  0.3911,  0.2602,  0.3313],\n        [-0.4234,  0.4162,  0.3923, -0.1546],\n        [-0.3938, -0.4354, -0.4637, -0.0908],\n        [-0.3306, -0.2846, -0.0817, -0.0776],\n        [-0.0807,  0.4337, -0.4564,  0.0763],\n        [-0.2389, -0.2613,  0.4902,  0.0325],\n        [-0.1459,  0.3431,  0.1530,  0.2638],\n        [-0.1657,  0.3976,  0.3951,  0.3048],\n        [ 0.3869,  0.0471,  0.0864,  0.1185],\n        [-0.3253,  0.4842, -0.0378,  0.0913],\n        [ 0.0559, -0.1420,  0.3440, -0.4529],\n        [ 0.1576,  0.1180,  0.2999, -0.3574],\n        [ 0.0546,  0.0811,  0.2521,  0.1952],\n        [-0.0126, -0.0924,  0.1705, -0.1040],\n        [-0.0063,  0.0028, -0.4742, -0.1588],\n        [ 0.1701,  0.0037,  0.2784,  0.3253],\n        [-0.3288,  0.0446,  0.1074,  0.2505],\n        [ 0.1442,  0.2913, -0.2903,  0.2393],\n        [ 0.4473, -0.3873, -0.3377, -0.3065],\n        [ 0.4983, -0.1542, -0.1176,  0.3613],\n        [-0.4301, -0.0999,  0.4459, -0.0467],\n        [-0.1369, -0.3015,  0.2948,  0.0332],\n        [ 0.4783,  0.1940,  0.1581,  0.3377],\n        [ 0.3352,  0.2903, -0.1638, -0.3610],\n        [ 0.4328,  0.2800, -0.1680, -0.4793],\n        [-0.1201,  0.0431, -0.0088,  0.2553],\n        [-0.0517,  0.0466, -0.0985,  0.1197],\n        [ 0.4436, -0.1029,  0.2250, -0.0851],\n        [-0.4197, -0.2114, -0.2509, -0.3183],\n        [ 0.4693,  0.3271, -0.4323,  0.0533],\n        [ 0.0272, -0.0755,  0.1740, -0.3431],\n        [-0.1964, -0.2167, -0.3717, -0.0923],\n        [ 0.0918, -0.0096, -0.4054,  0.1956],\n        [ 0.4081,  0.0649,  0.0192,  0.0338],\n        [-0.3556,  0.2857, -0.3758, -0.4245],\n        [-0.0443,  0.2221,  0.3735, -0.0906],\n        [ 0.0438,  0.1883, -0.0777,  0.3429],\n        [ 0.0070,  0.4695,  0.2491,  0.3178],\n        [-0.2635,  0.4461,  0.1963, -0.3359],\n        [ 0.0922, -0.4456, -0.2183, -0.1693],\n        [ 0.0911, -0.4469,  0.3291, -0.4328]], device='cuda:0',\n       requires_grad=True)",
+                                "Parameter containing:\ntensor([-0.1934,  0.4048, -0.1319, -0.0268,  0.3584, -0.4356,  0.1742, -0.3405,\n        -0.1206,  0.3009,  0.1131,  0.4864,  0.4830,  0.4271,  0.4680,  0.3674,\n         0.3337, -0.1175,  0.1062,  0.4485,  0.0731, -0.1714, -0.0961, -0.4326,\n        -0.4971,  0.2412,  0.3749,  0.3856,  0.1645, -0.1873, -0.0524, -0.0312,\n         0.2668,  0.3545, -0.0851,  0.2679,  0.0208, -0.0328, -0.0633,  0.3975,\n        -0.1853,  0.1250, -0.4157,  0.4440, -0.2430, -0.2615,  0.4044, -0.4619,\n        -0.1266,  0.4826, -0.4474, -0.2967,  0.1726, -0.4914, -0.0521, -0.2389,\n        -0.0179,  0.4944,  0.0911, -0.4865,  0.1948,  0.3818, -0.0664, -0.1403],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([[ 0.0951, -0.0951, -0.0954,  ...,  0.1038, -0.0093,  0.0516],\n        [ 0.0956, -0.1212,  0.0820,  ..., -0.0643,  0.0880,  0.0386],\n        [ 0.0927,  0.0807,  0.0131,  ...,  0.0479,  0.0964,  0.0053],\n        ...,\n        [ 0.0638, -0.0388,  0.0460,  ...,  0.1154,  0.1198,  0.0665],\n        [-0.1136,  0.0961, -0.0207,  ...,  0.0154, -0.0666,  0.0484],\n        [-0.1186,  0.0202,  0.0341,  ..., -0.0952, -0.0163, -0.0046]],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([ 0.0576,  0.0274,  0.0622, -0.0320,  0.1083, -0.0835,  0.0349,  0.0304,\n         0.0667, -0.0070,  0.0695, -0.0298, -0.0466,  0.0570,  0.1165, -0.0438,\n         0.0275,  0.0749,  0.0818, -0.0158,  0.0557, -0.0079,  0.0312, -0.0879,\n        -0.0972, -0.0713, -0.0527, -0.1228, -0.0602,  0.1225, -0.0227,  0.1027,\n        -0.0252, -0.0650, -0.0078, -0.0166,  0.1215, -0.0271,  0.0025,  0.0722,\n        -0.0876,  0.0430,  0.0787,  0.0525,  0.1178, -0.0334,  0.0978, -0.0276,\n         0.0835,  0.0598, -0.0695,  0.0751, -0.1048,  0.1069,  0.0086, -0.0989,\n        -0.0072, -0.0742,  0.0342, -0.1108, -0.0154, -0.0981, -0.0017,  0.0948],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([[-0.0139, -0.0181, -0.0813,  0.0443, -0.1109,  0.0477, -0.0559,  0.0669,\n         -0.0735, -0.0948, -0.0341, -0.0435,  0.0406, -0.0053,  0.0427, -0.0496,\n         -0.0398,  0.0068,  0.0570,  0.0646,  0.1186,  0.0671,  0.0395, -0.1099,\n         -0.0040, -0.0688,  0.0369, -0.0111,  0.0323, -0.0076, -0.0294, -0.0845,\n          0.0547,  0.0345,  0.0983,  0.0088,  0.0301, -0.1211, -0.1054, -0.0298,\n         -0.0614,  0.0755,  0.0524,  0.0135,  0.0718,  0.0752, -0.1233, -0.0229,\n          0.1114, -0.0951, -0.0587, -0.0883,  0.0798, -0.0580,  0.0327, -0.0191,\n          0.0119,  0.0306,  0.1053, -0.0603,  0.1062,  0.0455, -0.1121,  0.1018]],\n       device='cuda:0', requires_grad=True)",
+                                "Parameter containing:\ntensor([0.0643], device='cuda:0', requires_grad=True)"
+                            ],
+                            "weight_decay":	0
+                        }
+                    ],
+                    "state":	{}
+                }
+            }
+        }
+    },
+    "steps_per_epoch":	2000,
+    "train_v_iters":	80,
+    "vf_lr":	0.001
+}

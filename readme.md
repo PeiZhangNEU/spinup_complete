@@ -1,4 +1,4 @@
-# spinup_complete
+# Spinup_Complete
 
 对spinup代码的完善和整理，加入了pytorch版本的trpo以及离散版本的SAC
 
@@ -21,13 +21,19 @@ pytorch版本 1.6
 
 
 
-使用的时候，进入spinup/alogs/alg/ 运行 alg_train.py， 测试的时候运行 alg_test.py 即可
+使用的时候，进入`spinup/alogs/alg/` 运行 `alg_train.py`， 测试的时候运行 `alg_test.py` 即可
 
 
 
-项目把actor 和 critic的模型pt文件保存到了 model view 文件夹里。
+项目把 `actor` 和 `critic `的模型pt文件保存到了 `model view `文件夹里。
 
-可以使用在线模型可视化程序 Netronhttps://github.com/lutzroeder/netron来对模型进行可视化！
+可以使用在线模型可视化程序 Netron :https://github.com/lutzroeder/netron来对model_view保存好的模型进行可视化！
+
+
+
+`pre_train_data`是训练好的模型和训练过程。
+
+
 
 ![image-20220318100434094](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220318100434094.png)
 
@@ -37,76 +43,7 @@ pytorch版本 1.6
 
 
 
-# 一、Spinningup的策略梯度定理和之前我学的有差别，原因何在？
-
-## 书上的公式-无限步长(引入折扣因子)
-
-该项目的所有算法均是**基于策略梯度**的算法。 不是基于最优价值的算法，最优价值的算法有DQN，SARSA等。
-
-还记得，我在强化学习书上看到的原始的策略梯度定理为下式所示。这里使用的 $G_t$ 是**无限有折扣回报**，对于无限步长的情况，我们引入折扣因子使奖励收敛。
-$$
-G_t = R_{t+1} + \gamma R_{t+2}+...=\sum_{l=0}^{+\infty}\gamma^tR_{t+l+1}
-$$
-
-$$
-\grad E_\pi[G_0] =E[\sum_{t=0}^{\infty} (\gamma^t G_t) \grad ln\pi(A_t|S_t;\theta)]\\
-=E[\sum_{t=0}^{\infty} (\Psi_t) \grad ln\pi(A_t|S_t;\theta)]
-$$
-
-式子中的 $\gamma^t$ 是因为无限折扣回报，然后导致 $G_t = R_{t+1} + \gamma G_{t+1}$ ，进而导致贝尔曼方程中
-
-$q = r + \gamma \sum pv$ 存在了 $\gamma$ ，最后导致推理结果中存在 $\gamma^t$  
-
-式子中的 $\gamma^t G_t$ 可以记为 $\psi$ 
-
-$\psi$ 还可以是  $\gamma ^t q_\pi (S_t,A_t)$
-
-$\gamma^t[ q_\pi (S_t,A_t) - v_\pi(S_t)]$ 普通的优势函数  $a_t$
-
-$\gamma^t [U_t-v_\pi(S_t)] = \gamma^t[R_{t+1} + \gamma v_{\pi}(S_{t+1})-v_\pi(S_t)]$ ，时序差分的函数 $\delta_t$
-
-
-
-## spinup公式-有限步长(不引入折扣因子)
-
-**下面所有的算法，都是基于这个有限步长的策略梯度定理来产生的！**
-
-但是，spinup里面的策略梯度定理却长这个样子！没有了 $\gamma^t$。<font color='red'>其实就是把 $\gamma =1$ 了！是上面的特殊形式而已！</font>
-$$
-\grad E_\pi[G_0] =E[\sum_{t=0}^{T}  (G_t) \grad ln\pi(A_t|S_t;\theta)]\\
-=E[\sum_{t=0}^{T}  (\Psi_t) \grad ln\pi(A_t|S_t;\theta)]
-$$
-$=$ 
-
-![image-20220309112803911](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309112803911.png)
-
-这是因为spinup的推导使用的 $G_t$ 是**有限无折扣回报**。有限步长理论上不需要折扣因子，因为奖励本来就是收敛的，但是！**也可以加上折扣因子让奖励和时间建立联系**。
-$$
-G_t = R_{t+1} +R_{t+2} +... +R_T = \sum_{t^{'}=t+1}^TR_{t^{'}}
-$$
-这样的话 $G_t = R_{t+1} +G_{t+1}$ ， 从而导致贝尔曼方程中不存在$\gamma $ ，即$q = r + \sum pv$ 从而导致最终的公式里也没有
-
-式子中的 $ G_t$ 可以记为 $\Psi_t$ ，是**下面的第2种**形式。
-
-![image-20220309123753471](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309123753471.png)
-
-$\Psi_t$ 还可以是  $ q_\pi (S_t,A_t)$
-
-$[ q_\pi (S_t,A_t) - v_\pi(S_t)]$ 普通的优势函数  $a_t$
-
-$ [U_t-v_\pi(S_t)] = [R_{t+1} + \gamma v_{\pi}(S_{t+1})-v_\pi(S_t)]$ ，时序差分的函数 $\delta_t$
-
-
-
-## 把折扣因子作为参数结合到有限策略梯度中 GAE
-
-以有限步长的公式为基础，**也就是说不引入折扣因子！**：
-
-![image-20220309124957849](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220309124957849.png)
-
-
-
-# 二、项目有哪些代码
+# 一、项目有哪些代码
 
 这些代码都属于Actor-Critic， 而Actor-Critic属于策略梯度算法这个大类。
 
@@ -152,7 +89,7 @@ DDPG，TD3，SAC
 
 
 
-# 三、代码格式
+# 二、代码格式
 
 Spinning Up 项目的算法都按照固定的模板来实现。每个算法由两个文件组成：
 

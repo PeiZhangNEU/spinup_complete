@@ -10,9 +10,15 @@ alg
 -alg_test.py
 便于学习和开发。
 另外，本项目使用了spinup的log工具，需要安装mpi插件
-pytorch版本 1.11
+pytorch版本 1.6
 
 
+
+项目把actor 和 critic的模型pt文件保存到了 model view 文件夹里。
+
+可以使用在线模型可视化程序 Netronhttps://github.com/lutzroeder/netron来对模型进行可视化！
+
+![image-20220318100434094](https://github.com/PeiZhangNEU/spinup_complete/blob/master/complete_spinup_assets/image-20220318100434094.png)
 
 
 

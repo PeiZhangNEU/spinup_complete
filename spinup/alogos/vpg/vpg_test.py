@@ -6,6 +6,7 @@ import torch
 import gym
 import time
 
+from spinup.utils.make_model_and_save import make_model_and_save
 def load_model(path):
     '''把模型加载成cpu形式'''
     model = torch.load(path, map_location=torch.device('cpu'))
@@ -23,6 +24,11 @@ def test(path, env_name, render=True, num_episodes=2000, max_ep_len=1000):
     policy = load_model(path)  # 这个载入的policy和logger的save的东西有关
                                # 我save的是ActorCritic这个类，包括类的方法也保留
     env = gym.make(env_name)
+
+    # 单独保存actor和Critic的模型，以便于netron展示
+    model_father_dir = 'model_view/vpg/'
+    make_model_and_save(policy.pi, model_father_dir, 'actor.pt')
+    make_model_and_save(policy.v, model_father_dir, 'critic.pt')
 
     o, r, d, ep_ret, ep_len, n = env.reset(), 0, False, 0, 0, 0
     while n < num_episodes:
@@ -42,5 +48,5 @@ def test(path, env_name, render=True, num_episodes=2000, max_ep_len=1000):
 
 
 if __name__ == '__main__':
-    # test('data/vpg/vpg_s0/pyt_save/model.pt','Hopper-v2')
-    test('data/vpg_cartpole/vpg_cartpole_s0/pyt_save/model.pt','CartPole-v0')
+    test('data/vpg_hopper/vpg_hopper_s0/pyt_save/model.pt','Hopper-v2')
+    # test('data/vpg_cartpole/vpg_cartpole_s0/pyt_save/model.pt','CartPole-v0')

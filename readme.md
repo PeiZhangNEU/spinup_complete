@@ -27,7 +27,7 @@ pytorch版本 1.6
 
 项目把 `actor` 和 `critic `的模型pt文件保存到了 `model view `文件夹里。
 
-可以使用在线模型可视化程序 Netron :https://github.com/lutzroeder/netron来对model_view保存好的模型进行可视化！
+可以使用在线模型可视化程序 Netron :https://github.com/lutzroeder/netron 来对model_view保存好的模型进行可视化！
 
 
 

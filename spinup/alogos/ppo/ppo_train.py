@@ -55,6 +55,17 @@ def train(env_fn, actor_critic=core.MLPActorCritic, ac_kwargs=dict(), seed=0,
 
                 # 更新obs
                 o = next_o
+                
+                    # 今天发现的onpolicy训练需要注意的事情！
+                    # max_eplen一定要重视起来：
+                    #   原因如下：
+                    #   onpolicy算法只有在 terminal或者epoch_ended时才会计算GAE
+                    #   terminal需要满足：done=True 或者 ep_len==max_eplen才成立
+                    #   对于Pendulum这个环境，永远不会返回done=True，环境的默认env_max_eplen=200 如果我们把训练的max_eplen设置到很大比如1000
+                    #   那么环境运行过程中，ep_len最大会达到env_max_eplen=200, 也就是说ep_len永远不可能==max_eplen=1000
+                    #   那么terminal会永远为False，算法就只会在 epoch_ended时候才会计算一次GAE，这样的话梯度更新就没有意义了
+                    #   但是CartPole这种有done=True的环境，就没关系，因为done时就会计算gae
+                    # 所以我的建议是，根据env._max_epoch_steps这个数值设置训练时候的超参数max_eplen,这样无论什么环境都不会出错！
 
                 timeout = ep_len==max_ep_len              # 智能体可以不死执行到本回合结束
                 terminal = d or timeout                   # 智能体死了done或者执行完了回合还没死，就terminal
@@ -68,7 +79,7 @@ def train(env_fn, actor_critic=core.MLPActorCritic, ac_kwargs=dict(), seed=0,
                     # 如果智能体没死或者目前的步数达到了回合结束，那么就把最后
                     if timeout or epoch_ended:
                         _, v, _ = agent.ac.step(torch.as_tensor(o, dtype=torch.float32).to(device))
-                    else:
+                    else: # 智能体死了
                         v = 0
                     # 在一段轨迹结束时调用这个函数，填充到轨迹最后的last_value就是刚刚的v
                     agent.buf.finish_path(v)
@@ -108,16 +119,18 @@ if __name__ == '__main__':
     # 设置超参数
     import argparse
     parser = argparse.ArgumentParser()
-    # parser.add_argument('--env', type=str, default='CartPole-v0')
-    parser.add_argument('--env', type=str, default='Hopper-v2')
+    parser.add_argument('--env', type=str, default='CartPole-v0')
+    # parser.add_argument('--env', type=str, default='Hopper-v2')
+    # parser.add_argument('--env', type=str, default='Pendulum-v1')
     parser.add_argument('--hid', type=int, default=64)
     parser.add_argument('--l', type=int, default=2)
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--seed', '-s', type=int, default=0)
     parser.add_argument('--steps', type=int, default=3000)     # 发现ppo的epoch应该少一点，回合内部应该多一点，不知道为什么到了后期奖励会骤减
     parser.add_argument('--epochs', type=int, default=1000)  # 一共训练了3e6次
-    # parser.add_argument('--exp_name', type=str, default='ppo_cartpole')
-    parser.add_argument('--exp_name', type=str, default='ppo_hopper')
+    parser.add_argument('--exp_name', type=str, default='ppo_cartpole')
+    # parser.add_argument('--exp_name', type=str, default='ppo_hopper')
+    # parser.add_argument('--exp_name', type=str, default='ppo_pendulum')
     args = parser.parse_args()
 
     from spinup.utils.run_utils import setup_logger_kwargs
@@ -127,4 +140,5 @@ if __name__ == '__main__':
     train(lambda : gym.make(args.env), actor_critic=core.MLPActorCritic,
         ac_kwargs=dict(hidden_sizes=[args.hid]*args.l), gamma=args.gamma, 
         seed=args.seed, steps_per_epoch=args.steps, epochs=args.epochs,
+        # max_ep_len=200,  # max_ep_len 需要和gym环境的本身的最大步长相同！Hopper是1000，Pendulum是200，这个值可以通过env._max_episode_steps获得
         logger_kwargs=logger_kwargs, use_gpu=True)

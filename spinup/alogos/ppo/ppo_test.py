@@ -49,4 +49,5 @@ def test(path, env_name, render=True, num_episodes=2000, max_ep_len=1000):
 
 if __name__ == '__main__':
     # test('data/ppo_hopper/ppo_hopper_s0/pyt_save/model.pt','Hopper-v2')
-    test('data/ppo_cartpole/ppo_cartpole_s0/pyt_save/model.pt','CartPole-v0')
+    # test('data/ppo_cartpole/ppo_cartpole_s0/pyt_save/model.pt','CartPole-v0')
+    test('data/ppo_pendulum/ppo_pendulum_s0/pyt_save/model.pt','Pendulum-v1')

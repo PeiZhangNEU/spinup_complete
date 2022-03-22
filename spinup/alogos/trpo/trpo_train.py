@@ -114,7 +114,8 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     # parser.add_argument('--env', type=str, default='CartPole-v0')
-    parser.add_argument('--env', type=str, default='Hopper-v2')
+    # parser.add_argument('--env', type=str, default='Hopper-v2')
+    parser.add_argument('--env', type=str, default='Pendulum-v1')
     parser.add_argument('--hid', type=int, default=64)
     parser.add_argument('--l', type=int, default=2)
     parser.add_argument('--gamma', type=float, default=0.99)
@@ -122,7 +123,8 @@ if __name__ == '__main__':
     parser.add_argument('--steps', type=int, default=3000)     # 发现ppo的epoch应该少一点，回合内部应该多一点，不知道为什么到了后期奖励会骤减
     parser.add_argument('--epochs', type=int, default=1000)  # 一共训练了3e6次
     # parser.add_argument('--exp_name', type=str, default='trpo_cartpole')
-    parser.add_argument('--exp_name', type=str, default='trpo_hopper')
+    # parser.add_argument('--exp_name', type=str, default='trpo_hopper')
+    parser.add_argument('--exp_name', type=str, default='trpo_pendulum')
     parser.add_argument('--mode', type=str, default='TRPO')   # 选择更新模式 'TRPO'还是'NPG'
     args = parser.parse_args()
 
@@ -133,4 +135,5 @@ if __name__ == '__main__':
     train(lambda : gym.make(args.env), actor_critic=core.MLPActorCritic,
         ac_kwargs=dict(hidden_sizes=[args.hid]*args.l), gamma=args.gamma, 
         seed=args.seed, steps_per_epoch=args.steps, epochs=args.epochs,
+        max_ep_len=200, # max_ep_len 需要和gym环境的本身的最大步长相同！Hopper是1000，Pendulum是200，这个值可以通过env._max_episode_steps获得
         logger_kwargs=logger_kwargs, use_gpu=True, mode=args.mode)

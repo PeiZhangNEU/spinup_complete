@@ -105,13 +105,15 @@ if __name__ == '__main__':
     # 设置超参数
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--env', type=str, default='Hopper-v2')
+    # parser.add_argument('--env', type=str, default='Hopper-v2')
+    parser.add_argument('--env', type=str, default='Pendulum-v1')
     parser.add_argument('--hid', type=int, default=256)
     parser.add_argument('--l', type=int, default=2)
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--seed', '-s', type=int, default=0)
     parser.add_argument('--epochs', type=int, default=250)  # 一共训练了3e6次
-    parser.add_argument('--exp_name', type=str, default='ddpg')
+    # parser.add_argument('--exp_name', type=str, default='ddpg')
+    parser.add_argument('--exp_name', type=str, default='ddpg_pendulum')
     args = parser.parse_args()
 
     from spinup.utils.run_utils import setup_logger_kwargs

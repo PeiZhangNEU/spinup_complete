@@ -1,4 +1,11 @@
 # Spinup_Complete
+更新！
+
+参考DRLib作者的HER算法，按照spinup的代码结构写了DDPGHER算法，位于`spiup/goal_env_alogos/DDPG_HER`中
+
+其中Offpolicy是离线RL的通用代码`baseoffpolicy`,`memory`,`normalizer`。
+
+其中`baseoffpolicy`中主要包含了RL算法的超参数，以及HERsample的方法，以及获取动作的函数
 
 对spinup代码的完善和整理，加入了pytorch版本的trpo以及离散版本的SAC
 
